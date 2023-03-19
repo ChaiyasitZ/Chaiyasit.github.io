@@ -1,1 +1,0 @@
-# Chaiyasit.github.io
