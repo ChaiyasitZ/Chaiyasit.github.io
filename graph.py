@@ -91,10 +91,16 @@ color_dict = {'Chumphon': '#15B01A',
 colors = [color_dict[node] for node in network.nodes()]
 sizes = [5678] * len(network.nodes())
 
+shortest_path = nx.shortest_path(network, source='Phuket', target='Yala')
+distance = sum([float(edge_labels[(shortest_path[i], shortest_path[i+1])][:-3]) for i in range(len(shortest_path)-1)])
+print(f"The shortest path from Phuket to Yala is: {shortest_path}")
+print(f"The distance between Phuket and Yala is: {distance:.2f} km")
+
 plt.figure(figsize=(20, 16))
 plt.title("Distance of each province in Southern Thailand", size=20)
 nx.draw_networkx(network, pos=pos, node_color=colors, node_size=sizes, with_labels=True, font_size=11, linewidths=0.5, font_color='black', font_weight='700')
 nx.draw_networkx_edge_labels(network, pos=pos, edge_labels=edge_labels, font_size=9, font_color='black', label_pos=0.5, rotate=False)
-plt.show()
-          
+# plt.show()
+
+
               
